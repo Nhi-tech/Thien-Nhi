@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select the Right Option</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            font-size: 38px;
+            text-align: center;
+        }
+        .designer {
+            font-size: 38px;
+            text-align: center;
+            color: #666;
+            margin-top: -15px;
+        }
+        .question {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+        select {
+            font-size: 30px;
+            padding: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #ADD8E6; /* Light blue color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #87CEEB; /* Slightly darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Select the Right Option</h1>
+    <p class="designer">Designed by Thien Nhi</p>
+
+    <!-- First Question -->
+    <p class="question">John and Mary 
+        <select id="gap1">
+            <option value="">-- Select an option --</option>
+            <option value="come">come</option>
+            <option value="comes">comes</option>
+            <option value="came">came</option>
+        </select> 
+        twice a week.
+    </p>
+    <p id="feedback1" class="feedback"></p>
+    
+    <!-- Second Question -->
+    <p class="question">On hot days, the animals 
+        <select id="gap2">
+            <option value="">-- Select an option --</option>
+            <option value="swims">swims</option>
+            <option value="swim">swim</option>
+            <option value="swimming">swimming</option>
+        </select> 
+        in the river.
+    </p>
+    <p id="feedback2" class="feedback"></p>
+
+    <button onclick="checkAnswer()">Submit</button>
+    <button onclick="resetForm()">Reset</button>
+
+    <script>
+        function checkAnswer() {
+            const answer1 = document.getElementById('gap1').value;
+            const answer2 = document.getElementById('gap2').value;
+            const feedback1 = document.getElementById('feedback1');
+            const feedback2 = document.getElementById('feedback2');
+
+            // Check first question
+            if (answer1 === "come") {
+                feedback1.textContent = "Congratulations! Your answer is correct for Question 1.";
+                feedback1.className = "feedback correct";
+            } else if (answer1 === "comes") {
+                feedback1.textContent = "I am very sorry. Please check if 'comes' can go with 'John and Mary'.";
+                feedback1.className = "feedback incorrect";
+            } else if (answer1 === "came") {
+                feedback1.textContent = "Please look at the time expression for Question 1.";
+                feedback1.className = "feedback incorrect";
+            } else {
+                feedback1.textContent = "Please select an option for Question 1.";
+                feedback1.className = "feedback incorrect";
+            }
+
+            // Check second question
+            if (answer2 === "swim") {
+                feedback2.textContent = "Congratulations! Your answer is correct for Question 2.";
+                feedback2.className = "feedback correct";
+            } else if (answer2 === "swims") {
+                feedback2.textContent = "I am very sorry. Please check if 'swims' can go with 'the animals'.";
+                feedback2.className = "feedback incorrect";
+            } else if (answer2 === "swimming") {
+                feedback2.textContent = "Please look at the time expression for Question 2.";
+                feedback2.className = "feedback incorrect";
+            } else {
+                feedback2.textContent = "Please select an option for Question 2.";
+                feedback2.className = "feedback incorrect";
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('gap1').value = "";
+            document.getElementById('gap2').value = "";
+            document.getElementById('feedback1').textContent = "";
+            document.getElementById('feedback2').textContent = "";
+        }
+    </script>
+
+</body>
+</html>
